@@ -30,32 +30,24 @@ var buttonOfLogout='#edit_body > div:nth-child(1) > div.edit_loginBox.ui-resizab
 // 登录函数
 function login()
 {
-    console.log("正在进行登录操作");
-    // 自动填写账号密码到输入框
-    document.querySelector(inputOfAccount).value = user_account;
-    document.querySelector(inputOfPassword).value = user_password;
-    // 自动选择运营商
-    document.querySelector(buttonOfLSP).selectedIndex = lsp;
-    // 自动点击登录按钮
-    window.setTimeout(function(){document.querySelector(buttonOfLogin).click()},200);
+    
+    document.querySelector(inputOfAccount).value = user_account;// 自动填写账号
+    document.querySelector(inputOfPassword).value = user_password;//自动填写密码
+    document.querySelector(buttonOfLSP).selectedIndex = lsp;// 自动选择运营商
+    window.setTimeout(function(){document.querySelector(buttonOfLogin).click()},200);// 自动点击登录按钮
 }
-
 
 (function()
 {
-    'use strict';
-    // Your code here..
     window.setTimeout(function()
     {
-        //判断输入框是否存在
-        if( $(boxOfLogin).length > 0 )
+        if( $(boxOfLogin).length > 0 )//判断输入框是否存在
         {
                 console.log("登录框存在");
                 login();
                 window.setTimeout(function()
                 {
-                    //有返回按钮存在
-                    if(document.querySelector(buttonOfBack).value=="返回")
+                    if(document.querySelector(buttonOfBack).value=="返回")//有返回按钮存在
                     {
                         document.querySelector(buttonOfBack).click()
                         console.log("存在返回按钮，立即返回，并执行登录操作")
@@ -64,17 +56,14 @@ function login()
                     console.log("登录成功")
                     let res=confirm("登录成功")
                     console.log(res)
-                    //AC认证失败（之后再加上）
                 }, 1000);
         }
         else
         {
-            //输入框不存在
-            window.setTimeout(function()
+            window.setTimeout(function()//输入框不存在
             {
                 console.log("登录框不存在");
-                //判断注销按钮是否存在
-                if(document.querySelector(buttonOfLogout).value=="注销")
+                if(document.querySelector(buttonOfLogout).value=="注销")//判断注销按钮是否存在
                 {
                     console.log("注销按钮存在")
                     window.setTimeout(function(){alert("似乎已经登录过了，不需要再进行登录哦")})
